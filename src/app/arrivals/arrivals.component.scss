@@ -1,0 +1,90 @@
+@import "../../styles.scss";
+
+h1 {
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: $secondary-colour;
+  margin-left: 22px;
+}
+
+h2 {
+  font-family: inherit;
+  padding: 8px;
+  margin: 0;
+}
+
+h4 {
+  margin-bottom: 0;
+  color: $secondary-colour;
+  margin-left: 22px;
+}
+
+.flights-font {
+  font-family: "IBM Plex Mono", monospace;
+  color: white;
+  font-weight: 400;
+}
+
+.header-container {
+  width: 100%;
+  height: 6.5rem;
+  display: flex;
+  justify-content: space-between;
+
+  .logo {
+    margin: auto 6rem;
+    color: black;
+  }
+
+  .form-group {
+    display: flex;
+    height: 100%;
+
+    .form-select {
+      margin: 32px 32px 0 0;
+    }
+  }
+}
+
+.page-card {
+  padding: 0 2rem 2rem 2rem;
+  min-height: calc(100% - 8.5rem);
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.flights-board {
+  background-color: #000000;
+  padding: 2rem 1rem 1rem 1rem;
+
+  .flights-header-row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .flights-subheader-row {
+    display: grid;
+    grid-template-columns: 150px 120px 1fr 1fr 220px;
+    color: white;
+  }
+
+  .flights-row {
+    display: grid;
+    grid-template-columns: 150px 120px 1fr 1fr 220px;
+  }
+
+  .flights-row-container {
+    margin: 8px 1rem;
+    background-color: #1c1c1c;
+  }
+}
+
+.one-column {
+  grid-template-columns: 1fr !important;
+}
+
+.clock {
+  font-size: 26px;
+  color: white;
+  padding: 0 1rem;
+}

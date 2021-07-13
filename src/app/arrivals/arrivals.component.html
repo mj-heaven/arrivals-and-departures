@@ -1,0 +1,58 @@
+<div class="header-container">
+    <h1 class="logo">Arrivals + Departures</h1>
+    <form [formGroup]="airportForm" #formDir="ngForm" class="form-group">
+        <mat-form-field class="form-select">
+            <mat-label>Select an airport</mat-label>
+            <mat-select formControlName="airport">
+                <mat-option *ngFor="let airport of airportsObj | keyvalue" [value]="airport.value.code">{{airport.value.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+</div>
+<div class="page-card">
+    <div class="flights-board">
+        <div class="flights-header-row">
+            <h1>
+                <span *ngIf="board === 'arrivals'">ARRIVALS</span>
+                <span *ngIf="board === 'departures'">DEPARTURES</span>
+                <span>&nbsp;-&nbsp;{{airportsObj[airportCode].name | uppercase}}</span>
+            </h1>
+            <div class="clock">{{currentTime | date:'mediumTime'}}</div>
+        </div>
+        <div class="flights-subheader-row">
+            <h4 *ngIf="board === 'arrivals'">Arrival time</h4>
+            <h4 *ngIf="board === 'departures'">Departure time</h4>
+            <h4>Flight</h4>
+            <h4>Airline</h4>
+            <h4 *ngIf="board === 'arrivals'">Origin</h4>
+            <h4 *ngIf="board === 'departures'">Destination</h4>
+            <h4>Status</h4>
+        </div>
+        <div *ngFor="let flight of filteredFlights" class="flights-row flights-font">
+            <div class="flights-row-container">
+                <h2 *ngIf="board === 'arrivals'">{{ flight.arrivalTime | date: 'shortTime' }}</h2>
+                <h2 *ngIf="board === 'departures'">{{ flight.depatureTime | date: 'shortTime' }}</h2>
+            </div>
+            <div class="flights-row-container">
+                <h2>{{ flight.flightId | uppercase }}</h2>
+            </div>
+            <div class="flights-row-container">
+                <h2>{{ flight.carrier | uppercase }}</h2>
+            </div>
+            <div class="flights-row-container">
+                <h2 *ngIf="board === 'arrivals'">{{ flight.origin.name | uppercase }}</h2>
+                <h2 *ngIf="board === 'departures'">{{ flight.destination.name | uppercase }}</h2>
+            </div>
+            <div class="flights-row-container">
+                <h2>{{ flight.status | uppercase }}</h2>
+            </div>
+        </div>
+        <div *ngIf="!filteredFlights || filteredFlights.length === 0" class="flights-row flights-font one-column">
+            <div class="flights-row-container">
+                <h2>There are no incoming flights today.</h2>
+            </div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>

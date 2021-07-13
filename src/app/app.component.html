@@ -1,0 +1,26 @@
+<mat-drawer-container class="container" autosize>
+  <button mat-icon-button (click)="drawer.toggle()" onclick="this.blur()" class="menu-button">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-drawer #drawer class="sidenav" mode="over">
+    <button mat-icon-button (click)="drawer.toggle()" class="menu-button" tabindex="-1">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-selection-list class="nav-list" [multiple]="false">
+      <mat-divider></mat-divider>
+      <mat-list-option [routerLink]="['board','arrivals','airport', airportCode]">
+        <mat-icon mat-list-icon>flight_land</mat-icon>
+        <div mat-line>Arrivals board</div>
+      </mat-list-option>
+      <mat-divider></mat-divider>
+      <mat-list-option [routerLink]="['board','departures','airport', airportCode]">
+        <mat-icon mat-list-icon>flight_takeoff</mat-icon>
+        <div mat-line>Departures board</div>
+      </mat-list-option>
+      <mat-divider></mat-divider>
+    </mat-selection-list>
+  </mat-drawer>
+  <div class="sidenav-content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>
